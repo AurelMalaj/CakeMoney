@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cakemoney/widgets/home.dart';
+import 'package:cakemoney/screens/home.dart';
 
 void main() {
   runApp(MyApp());
