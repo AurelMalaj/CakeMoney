@@ -1,0 +1,27 @@
+Features:
+
+Home:
+1 - Come utente voglio aprire l'aplicazine e visulizzare la pagina 'Home'
+2 - Come utente voglio visulizzare il Totale in alto al centro
+3 - Come utente voglio visulizzare il grafico come parte principale
+4 - Come utente voglio visualizzare circa infondo alla pagina a destra un pulsante che mi permetta di aggiungere dei movimenti
+5 - Come utente voglio visualizzare infondo alla pagina visualizzare una navbar per poter accedere altre pagine
+
+Nuovo movimento:
+1 - Come utente voglio una volta premuto il pulsante dedicato aprire la pagina 'nuovo movimento'
+2 - Come utente voglio visualizzare in alto una casella per inserire l'importo ( e selezionare - o + per sottrarre o aggiungere l'importo)
+3 - Come utente voglio visualizzare sotto alla casella precedente un menu a tendina per selezionare la categoria
+4 - Come utente voglio visualizzare sotto alla casella precedente una casella per inserire volendo una nota
+5 - Come utente voglio visualizzare un bottone per confermare
+6 - Come utente voglio visualizzare infondo alla pagina visualizzare una navbar per poter accedere altre pagine
+
+Entrate:
+1 - Come utente voglio una volta premuto il pulsante dedicato nella navbar aprire la pagina 'Entrate'
+2 - Come utente voglio visulizzare l'elenco di tutte le entrate 
+3 - Come utente voglio visualizzare infondo alla pagina visualizzare una navbar per poter accedere altre pagine
+
+Uscite:
+1 - Come utente voglio una volta premuto il pulsante dedicato nella navbar aprire la pagina 'Uscite'
+2 - Come utente voglio visulizzare l'elenco di tutte le uscite
+3 - Come utente voglio visualizzare infondo alla pagina visualizzare una navbar per poter accedere altre pagine
+
