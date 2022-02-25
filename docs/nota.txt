@@ -1,0 +1,6 @@
+Non serve creare un modello classe per i soldi e non sarebbe corretto richiamare sempre la classe
+per salvare il totale.
+
+-La gestione del totale va esegta all'interno della home, all'intenro del components in uno stafulwidget
+
+-Totale sara la somma algebrica della lista entrate e della lista uscite
