@@ -2,9 +2,11 @@
 //di nuovi movimenti
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'buttonSelectCategory.dart';
 
-class MyStatelessWidget extends StatelessWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
+class ButtonAdd extends StatelessWidget {
+  const ButtonAdd({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +31,20 @@ class MyStatelessWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 16),
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: UnderlineInputBorder(),
-                            labelText: 'Inserire importo movimento',
-                          ),
+                        child: TextField(
+                          decoration:
+                              InputDecoration(labelText: "Enter your number"),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
                         ),
                       ),
-                      const Text('Modal BottomSheet'),
+                      const ButtonSelectCategory(),
                       ElevatedButton(
-                        child: const Text('Close BottomSheet'),
+                        child: const Text('Add'),
                         onPressed: () => Navigator.pop(context),
-                      )
+                      ),
                     ],
                   ),
                 ),

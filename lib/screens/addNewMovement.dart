@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/buttonAdd.dart';
+import '../widgets/ScreenAddNewMovement/buttonAdd.dart';
 
 // void main() => runApp(const Add());
 
@@ -14,7 +14,7 @@ class AddNewMovement extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title), centerTitle: true),
-        body: const MyStatelessWidget(),
+        body: const ButtonAdd(),
       ),
     );
   }
