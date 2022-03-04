@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:cakemoney/screens/exit.dart';
 import 'package:cakemoney/screens/entrance.dart';
 import 'package:cakemoney/screens/home.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,6 @@ class _NavbarState extends State<Navbar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      //currentIndex
       //onTap: widget.onTap,
       onTap: (index) {
         if (index == 0) {
@@ -26,8 +27,7 @@ class _NavbarState extends State<Navbar> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (builContext) =>
-                      Entrance(title: 'Sono una homepage')));
+                  builder: (builContext) => Entrance(title: 'Entrate')));
 
           // Entrate
         }
@@ -35,8 +35,7 @@ class _NavbarState extends State<Navbar> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (builContext) =>
-                      Entrance(title: 'Sono una homepage')));
+                  builder: (builContext) => Exit(title: 'Uscite')));
           // Uscite
         }
       },

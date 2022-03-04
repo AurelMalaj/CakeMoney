@@ -16,34 +16,58 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _index = 0;
+
+  final List<Movement> mockMovement = <Movement>[
+    Movement(value: 1010.00, category: "Totale", note: "non sono ricco"),
+    Movement(
+        value: 500.00, category: "Spese Totali Mensili", note: "Escort e aperitivo"),
+    Movement(
+        value: 490.00, category: "Bollete", note: "A facc ro cazz"),
+  ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
           centerTitle: true,
-          backgroundColor: Colors.green,
+          backgroundColor: Color.fromARGB(255, 7, 33, 116),
         ),
-        body: _index == 0
-            ? Center(
+        body: ListView.separated(
+          padding: const EdgeInsets.all(8),
+          itemCount: mockMovement.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              height: 100,
+              width: 300,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 95, 111, 165),
+                border: Border.all(color: Colors.black),
+              ),
+              child: Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      'diagramma', //aggiungere widget diagramma a torta
+                  children: [
+                    Text(
+                      '${mockMovement[index].value} €',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
+                    Text(
+                      'Categoria : ${mockMovement[index].category}',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    Text(
+                      'Note : ${mockMovement[index].note}',
+                      style:
+                          TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
+                    )
                   ],
                 ),
-              )
-            : Entrance(title: 'Sono le entrate'),
-        floatingActionButton: FloatingActionButton(
-          onPressed: (() {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AddNewMovement()),
+              ),
             );
-          }),
-          child: const Icon(Icons.add),
+          },
+          separatorBuilder: (BuildContext context, int index) =>
+              const Divider(),
         ),
         bottomNavigationBar: Navbar(
           onTap: ((index) {
