@@ -47,10 +47,7 @@ class ButtonAdd extends StatelessWidget {
               onPressed: (() {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => MyHomePage(
-                            title: 'CakeMoney',
-                          )),
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
                 );
               }),
             ),
