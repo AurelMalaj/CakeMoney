@@ -5,13 +5,24 @@ import 'package:cakemoney/screens/addNewMovement.dart';
 import 'package:cakemoney/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import '../../model/movement.dart';
+import '../../model/wallet.dart';
 import 'buttonSelectCategory.dart';
 
-class ButtonAdd extends StatelessWidget {
+class ButtonAdd extends StatefulWidget {
   const ButtonAdd({Key? key}) : super(key: key);
 
   @override
+  State<ButtonAdd> createState() => _ButtonAddState();
+}
+
+class _ButtonAddState extends State<ButtonAdd> {
+  @override
   Widget build(BuildContext context) {
+    TextEditingController numberController = TextEditingController();
+    TextEditingController noteController = TextEditingController();
+
     return Container(
       height: 700,
       color: Color.fromARGB(255, 156, 155, 152),
@@ -23,28 +34,33 @@ class ButtonAdd extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextField(
+                controller: numberController,
                 decoration: InputDecoration(labelText: "Enter your number"),
                 keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
               ),
             ),
+            // Text('${(Provider.of<Wallet>(context, listen: true).sum())} €'),
+
+            // Text('ciao'),
             //seleziona categoria
             const ButtonSelectCategory(),
             //Inserimento note
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'note',
-                ),
-              ),
+                  controller: noteController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'note',
+                  )),
             ),
             ElevatedButton(
               child: const Text('Add'),
               onPressed: (() {
+                Provider.of<Wallet>(context, listen: false).addMovemnt(Movement(
+                    value: double.parse(numberController.text),
+                    category: "pinoli",
+                    note: noteController.text));
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => MyHomePage()),

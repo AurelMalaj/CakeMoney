@@ -13,7 +13,6 @@ class Wallet with ChangeNotifier {
   void addMovemnt(Movement mov) {
     movements.add(mov);
     //rimane in ascolto per eddettuare l'inserimento di nuovi movimenti
-    notifyListeners();
   }
 
   double sum() {
@@ -21,6 +20,7 @@ class Wallet with ChangeNotifier {
     for (var values in movements) {
       sum = sum + values.value;
     }
+    notifyListeners();
     return sum;
   }
 
