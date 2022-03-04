@@ -15,3 +15,16 @@ https://api.flutter.dev/flutter/material/DropdownButton-class.html
 Nota per venerdi:
 Vedere se creare sottocartele nella cartella widget realtiva a gli screens
 per capire dove sono richiamati a colpo d'occhio
+
+
+Altro:
+provider per gestire lo stato
+di tipo balance
+
+change notify 
+-----
+firebae e supbase
+---
+
+
+botton modal shit
