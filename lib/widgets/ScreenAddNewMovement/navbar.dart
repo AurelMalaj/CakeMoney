@@ -18,11 +18,8 @@ class _NavbarState extends State<Navbar> {
       //onTap: widget.onTap,
       onTap: (index) {
         if (index == 0) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (builContext) =>
-                      MyHomePage(title: 'Sono una homepage')));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (builContext) => MyHomePage()));
           // home
         }
         if (index == 1) {
