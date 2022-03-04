@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cakemoney/model/movement.dart';
 import 'package:cakemoney/widgets/ScreenAddNewMovement/navbar.dart';
+import 'package:provider/provider.dart';
+
+import '../model/wallet.dart';
 
 class Entrance extends StatefulWidget {
   const Entrance({Key? key, required this.title}) : super(key: key);
@@ -13,15 +16,11 @@ class Entrance extends StatefulWidget {
 class _EntranceState extends State<Entrance> {
   int _index = 0;
   // MockTest per display info in ListView
-  final List<Movement> mockMovement = <Movement>[
-    Movement(value: 25.00, category: "Paghetta", note: "Paghetta settimnale"),
-    Movement(value: 1200.00, category: "Stipendio", note: "Stipendio Marzo"),
-    Movement(
-        value: 10, category: "Altre entrate", note: "Debito amico per regalo"),
-  ];
+  // final List<Movement> mockMovement = Wallet.movements;
 
   @override
   Widget build(BuildContext context) {
+    //mockMovement.add(Provider.of<Wallet>(context).movements)
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
@@ -30,7 +29,7 @@ class _EntranceState extends State<Entrance> {
         ),
         body: ListView.separated(
           padding: const EdgeInsets.all(8),
-          itemCount: mockMovement.length,
+          itemCount: Provider.of<Wallet>(context).movements.length,
           itemBuilder: (BuildContext context, int index) {
             return Container(
               height: 100,
@@ -42,16 +41,16 @@ class _EntranceState extends State<Entrance> {
                 child: Column(
                   children: [
                     Text(
-                      '${mockMovement[index].value} €',
+                      '${Provider.of<Wallet>(context).movements[index].value} €',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     Text(
-                      'Categoria : ${mockMovement[index].category}',
+                      'Categoria : ${Provider.of<Wallet>(context).movements[index].category}',
                       style: TextStyle(fontSize: 20),
                     ),
                     Text(
-                      'Note : ${mockMovement[index].note}',
+                      'Note : ${Provider.of<Wallet>(context).movements[index].note}',
                       style:
                           TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
                     )

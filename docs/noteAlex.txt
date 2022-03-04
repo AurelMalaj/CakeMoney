@@ -1,0 +1,5 @@
+TO DO 11/03 : 
+Ristrutturare Home con totali e totali per categoria?
+Creare Dei metodi in Wallet che restituiscano solo quei movement che: sono Entrate - Sono Costi/Uscite - Un lista con le somme per categorie
+Definire le categorie e "prenderle nella schermata Add" - Categorie con mappa Key-Value che indica se sono entrare o uscite
+ 
