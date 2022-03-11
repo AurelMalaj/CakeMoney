@@ -29,7 +29,7 @@ class _EntranceState extends State<Entrance> {
         ),
         body: ListView.separated(
           padding: const EdgeInsets.all(8),
-          itemCount: Provider.of<Wallet>(context).movements.length,
+          itemCount: Provider.of<Wallet>(context).entranceMovements().length,
           itemBuilder: (BuildContext context, int index) {
             return Container(
               height: 100,
@@ -41,16 +41,16 @@ class _EntranceState extends State<Entrance> {
                 child: Column(
                   children: [
                     Text(
-                      '${Provider.of<Wallet>(context).movements[index].value} €',
+                      '${Provider.of<Wallet>(context).entranceMovements()[index].value} €',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     Text(
-                      'Categoria : ${Provider.of<Wallet>(context).movements[index].category}',
+                      'Categoria : ${Provider.of<Wallet>(context).entranceMovements()[index].category}',
                       style: TextStyle(fontSize: 20),
                     ),
                     Text(
-                      'Note : ${Provider.of<Wallet>(context).movements[index].note}',
+                      'Note : ${Provider.of<Wallet>(context).entranceMovements()[index].note}',
                       style:
                           TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
                     )
