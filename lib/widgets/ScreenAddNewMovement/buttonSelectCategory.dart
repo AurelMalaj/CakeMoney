@@ -1,19 +1,30 @@
+import 'package:cakemoney/model/movement.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../model/wallet.dart';
 
 class ButtonSelectCategory extends StatefulWidget {
-  const ButtonSelectCategory({Key? key}) : super(key: key);
+  // Funzione da passare come callback al widgett buttonAddCategory
+
+  final Function(String? value) onchange;
+  const ButtonSelectCategory({Key? key, required this.onchange})
+      : super(key: key);
 
   @override
   State<ButtonSelectCategory> createState() => _ButtonSelectCategoryState();
 }
 
 class _ButtonSelectCategoryState extends State<ButtonSelectCategory> {
-  String dropdownValue = 'One';
+  //potresti avere dei record senza categoria
+  //colpa anche del ?
+  String dropdownValue = "";
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      value: dropdownValue,
+      value: dropdownValue =
+          Provider.of<Wallet>(context).possibileCategories[0],
       icon: const Icon(Icons.arrow_downward),
       elevation: 16,
       style: const TextStyle(color: Colors.deepPurple),
@@ -25,8 +36,11 @@ class _ButtonSelectCategoryState extends State<ButtonSelectCategory> {
         setState(() {
           dropdownValue = newValue!;
         });
+        //richiamo la callback per quando avvengo delle modifiche al valore category
+        this.widget.onchange(newValue);
       },
-      items: <String>['One', 'Two', 'Free', 'Four']
+      items: Provider.of<Wallet>(context, listen: true)
+          .possibileCategories
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,

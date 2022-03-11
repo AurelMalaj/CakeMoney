@@ -1,6 +1,6 @@
 class Movement {
   double value;
-  String category;
+  String? category;
   String? note;
 
   Movement({required this.value, required this.category, this.note});
@@ -9,27 +9,3 @@ class Movement {
     this.note = note;
   }
 }
-
-
-
-/*
-class PicQuote {
-  String quote;
-  String imageUrl;
-  
-  
-  String? _id;
-  bool? isFavorite;
-
-  String? get id => _id;
-
-  PicQuote({
-    required this.quote,
-    required this.imageUrl,
-    this.isFavorite = false,
-  });
-
-  PicQuote.withId({required this.quote, required this.imageUrl}) {
-    isFavorite = false;
-  }
-}*/

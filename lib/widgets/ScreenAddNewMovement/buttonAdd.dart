@@ -22,6 +22,7 @@ class _ButtonAddState extends State<ButtonAdd> {
   Widget build(BuildContext context) {
     TextEditingController numberController = TextEditingController();
     TextEditingController noteController = TextEditingController();
+    String? valueCategory = "";
 
     return Container(
       height: 700,
@@ -43,7 +44,10 @@ class _ButtonAddState extends State<ButtonAdd> {
 
             // Text('ciao'),
             //seleziona categoria
-            const ButtonSelectCategory(),
+            ButtonSelectCategory(onchange: (String? value) {
+              //Alle modifiche nel componente le richiamo qui nella callback
+              valueCategory = value;
+            }),
             //Inserimento note
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -59,7 +63,7 @@ class _ButtonAddState extends State<ButtonAdd> {
               onPressed: (() {
                 Provider.of<Wallet>(context, listen: false).addMovemnt(Movement(
                     value: double.parse(numberController.text),
-                    category: "pinoli",
+                    category: valueCategory,
                     note: noteController.text));
                 Navigator.push(
                   context,

@@ -5,6 +5,12 @@ import 'package:flutter/material.dart';
 class Wallet with ChangeNotifier {
   //si istanzia una lista
   late List<Movement> movements;
+  final List<String> possibileCategories = [
+    "Entrata generica",
+    "Uscita generica",
+    "Bollette/Utenze",
+    "Paghetta",
+  ];
   //costruttore per inizializzare movements
   Wallet() {
     movements = [];
@@ -32,5 +38,15 @@ class Wallet with ChangeNotifier {
       }
     }
     return sum;
+  }
+
+  List<Movement> entranceMovements() {
+    List<Movement> positiveMovements = [];
+    movements.forEach((mov) {
+      if (mov.value > 0) {
+        positiveMovements.add(mov);
+      }
+    });
+    return positiveMovements;
   }
 }
