@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cakemoney/model/movement.dart';
 import 'package:cakemoney/widgets/ScreenAddNewMovement/navbar.dart';
+import 'package:provider/provider.dart';
+
+import '../model/wallet.dart';
 
 class Exit extends StatefulWidget {
   const Exit({Key? key, required this.title}) : super(key: key);
@@ -14,14 +17,6 @@ class _ExitState extends State<Exit> {
   @override
   int _index = 0;
 
-  final List<Movement> mockMovement = <Movement>[
-    Movement(value: 25.00, category: "Spesa", note: "Spesa fatta per 3 giorni"),
-    Movement(
-        value: 200.00, category: "Itech", note: "Acquisto di Mouse e tastiera"),
-    Movement(
-        value: 50.00, category: "Bollete", note: "Bolletta della luce mensile"),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +27,7 @@ class _ExitState extends State<Exit> {
         ),
         body: ListView.separated(
           padding: const EdgeInsets.all(8),
-          itemCount: mockMovement.length,
+          itemCount: Provider.of<Wallet>(context).exitMovements().length,
           itemBuilder: (BuildContext context, int index) {
             return Container(
               height: 100,
@@ -45,16 +40,16 @@ class _ExitState extends State<Exit> {
                 child: Column(
                   children: [
                     Text(
-                      '${mockMovement[index].value} €',
+                      '${Provider.of<Wallet>(context).exitMovements()[index].value} €',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     Text(
-                      'Categoria : ${mockMovement[index].category}',
+                      'Categoria : ${Provider.of<Wallet>(context).exitMovements()[index].category}',
                       style: TextStyle(fontSize: 20),
                     ),
                     Text(
-                      'Note : ${mockMovement[index].note}',
+                      'Note : ${Provider.of<Wallet>(context).exitMovements()[index].note}',
                       style:
                           TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
                     )

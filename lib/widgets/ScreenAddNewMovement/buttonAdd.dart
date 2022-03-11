@@ -61,14 +61,19 @@ class _ButtonAddState extends State<ButtonAdd> {
             ElevatedButton(
               child: const Text('Add'),
               onPressed: (() {
-                Provider.of<Wallet>(context, listen: false).addMovemnt(Movement(
-                    value: double.parse(numberController.text),
-                    category: valueCategory,
-                    note: noteController.text));
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
-                );
+                if (valueCategory != null && valueCategory!.isNotEmpty) {
+                  Provider.of<Wallet>(context, listen: false).addMovemnt(
+                      Movement(
+                          value: double.parse(numberController.text),
+                          category: valueCategory,
+                          note: noteController.text));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()),
+                  );
+                } else {
+                  AlertDialog(title: Text("one or more filed are incorect"));
+                }
               }),
             ),
           ],

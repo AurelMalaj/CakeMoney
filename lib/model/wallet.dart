@@ -10,6 +10,8 @@ class Wallet with ChangeNotifier {
     "Uscita generica",
     "Bollette/Utenze",
     "Paghetta",
+    "Benzina",
+    "Spesa"
   ];
   //costruttore per inizializzare movements
   Wallet() {
@@ -48,5 +50,15 @@ class Wallet with ChangeNotifier {
       }
     });
     return positiveMovements;
+  }
+
+  List<Movement> exitMovements() {
+    List<Movement> neagtiveMovements = [];
+    movements.forEach((mov) {
+      if (mov.value < 0) {
+        neagtiveMovements.add(mov);
+      }
+    });
+    return neagtiveMovements;
   }
 }
