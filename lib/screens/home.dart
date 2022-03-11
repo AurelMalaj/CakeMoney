@@ -18,9 +18,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _index = 0;
 
-  final List<Movement> mockMovement = <Movement>[
-    Movement(value: 22, category: "test")
-  ];
+  // final List<Movement> mockMovement = <Movement>[
+  //   Movement(value: 22, category: "test")
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -30,41 +30,47 @@ class _MyHomePageState extends State<MyHomePage> {
           centerTitle: true,
           backgroundColor: Color.fromARGB(255, 7, 33, 116),
         ),
-        body: ListView.separated(
-          padding: const EdgeInsets.all(8),
-          itemCount: mockMovement.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 100,
-              width: 300,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 95, 111, 165),
-                border: Border.all(color: Colors.black),
-              ),
-              child: Center(
-                child: Column(
-                  children: [
-                    Text(
-                      '${mockMovement[index].value} €',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        //crtl .
+        body: Column(
+          children: [
+            Text('Totale: ${Provider.of<Wallet>(context).sum()}',
+                style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 7, 7, 7))),
+            Expanded(
+              child: ListView.separated(
+                padding: const EdgeInsets.all(8),
+                itemCount:
+                    Provider.of<Wallet>(context).possibileCategories.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: 40,
+                    width: 250,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 121, 145, 224),
+                      border: Border.all(color: Colors.black),
                     ),
-                    Text(
-                      'Categoria : ${mockMovement[index].category}',
-                      style: TextStyle(fontSize: 20),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Text(
+                            '${Provider.of<Wallet>(context).possibileCategories[index]} : ${Provider.of<Wallet>(context).sumByCategory(Provider.of<Wallet>(context).possibileCategories[index])}',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Text(
-                      'Note : ${(Provider.of<Wallet>(context, listen: true).sum())} €',
-                      style:
-                          TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
-                    )
-                  ],
-                ),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    const Divider(),
               ),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
+            ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: (() {
