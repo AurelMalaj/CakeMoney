@@ -18,13 +18,12 @@ class ButtonSelectCategory extends StatefulWidget {
 class _ButtonSelectCategoryState extends State<ButtonSelectCategory> {
   //potresti avere dei record senza categoria
   //colpa anche del ?
-  String dropdownValue = "";
+  String dropdownValue = "Entrata generica";
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      value: dropdownValue =
-          Provider.of<Wallet>(context).possibileCategories[0],
+      value: dropdownValue,
       icon: const Icon(Icons.arrow_downward),
       elevation: 16,
       style: const TextStyle(color: Colors.deepPurple),
